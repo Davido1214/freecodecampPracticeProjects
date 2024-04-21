@@ -44,11 +44,7 @@ let currentItem = 0;
 
 // load initial item
 window.addEventListener('DOMContentLoaded', function () {
-  const item = reviews[currentItem];
-  img.src = item.img;
-  author.textContent = item.name;
-  job.textContent = item.job;
-  info.textContent = item.text;
+  showPerson();
 });
 
 // show person based on item
@@ -77,8 +73,10 @@ prevBtn.addEventListener('click', function () {
 });
 // show random person
 randomBtn.addEventListener('click', function () {
-  console.log('hello');
 
   currentItem = Math.floor(Math.random() * reviews.length);
+  if (currentItem < 0 ) {
+    currentItem = reviews.length - 1;
+  }
   showPerson(currentItem);
 });
